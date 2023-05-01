@@ -1,0 +1,20 @@
+Class - The class is the factory and the blueprint for an instance
+Instance - A constructed object of the class
+Type - Indicates the class to which the instance belongs to
+Attribute - Any object value: object.Attribute
+Method - A "callable attribute" defined in the class
+
+* Classes are "instance factories"
+* Classes define an "instance blueprint"
+* Instances know to which class they belong ("type")
+* Instances can access variables defined in the class
+
+6 Points to Understanding Classes
+---------------------------------
+1) An instance of a class knows what class it's from
+2) Vars defined in the class are available to the instance
+3) A method on an instance passes instance as the first argument to the method (named self in the method)
+4) Instances have their own data called instance attributes
+5) Variables defined in the class are called class attributes
+6) When we read an attribute, Python looks for it first in the instance, and then the class
+
