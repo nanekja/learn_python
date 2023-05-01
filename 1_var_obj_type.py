@@ -24,3 +24,8 @@ print (type(mybool))
 print (type(mynone))
 print (type(myfunc))
 print(type(this_type))
+
+# So indeed every single object in Python has a type including the none value which 
+# is Python's null value it's of type none type.
+# The function to is a variable that has a type.
+# The type of the list was assigned to a variable and then the type of that object has a type 'type'.
