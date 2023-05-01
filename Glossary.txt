@@ -18,3 +18,8 @@ Method - A "callable attribute" defined in the class
 5) Variables defined in the class are called class attributes
 6) When we read an attribute, Python looks for it first in the instance, and then the class
 
+* Instance methods are variables defined in the class
+* They are accessed through the instance: instance.method()
+* When called through the instance, the instance is automatically passed as 1st argument to the method
+* Bound Methods: Because of this automatic passing of instance, instance methods are called bound methods
+
