@@ -8,6 +8,8 @@ Method - A "callable attribute" defined in the class
 * Classes define an "instance blueprint"
 * Instances know to which class they belong ("type")
 * Instances can access variables defined in the class
+* Object - An object is a unit of data (having one or more attributes), of a particular class or type with associated functionality (methods).
+* Self - self is the instance upon which the method was called
 
 6 Points to Understanding Classes
 ---------------------------------
@@ -22,4 +24,6 @@ Method - A "callable attribute" defined in the class
 * They are accessed through the instance: instance.method()
 * When called through the instance, the instance is automatically passed as 1st argument to the method
 * Bound Methods: Because of this automatic passing of instance, instance methods are called bound methods
+* Instance data takes the form of instance attribute values, set and accessed through object.attribute syntax
+
 
