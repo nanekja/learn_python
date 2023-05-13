@@ -27,3 +27,8 @@ Method - A "callable attribute" defined in the class
 * Instance data takes the form of instance attribute values, set and accessed through object.attribute syntax
 
 
+3 Pillars of OOP
+1) Encapsulation
+2) Inheritance
+3) Polymorphism
+
