@@ -28,7 +28,15 @@ Method - A "callable attribute" defined in the class
 
 
 3 Pillars of OOP
-1) Encapsulation
-2) Inheritance
+1) Encapsulation - Ensures the integrity of the data in the object by using setter and getter methods.
+2) Inheritance - Inheritance refers to a new feature that we'll look at now the ability to have one class inherit the attributes of another class.
 3) Polymorphism
+
+Object.Attribute Lookup Hierarchy
+1) In the instance
+2) In the class
+3) Any class from which this class inherits
+
+* An inheriting class - Child class / Derived class / Subclass
+* An inherited class - Parent class / Base class / Superclass
 

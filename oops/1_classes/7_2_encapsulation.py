@@ -22,6 +22,6 @@ a_obj.set_val(10)
 
 print(a_obj.get_val())
 
-a_obj.set_val('hello')
-
+#a_obj.set_val('hello')
+a_obj.val="hello"
 print(a_obj.increment_val())
