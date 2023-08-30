@@ -30,7 +30,10 @@ Method - A "callable attribute" defined in the class
 3 Pillars of OOP
 1) Encapsulation - Ensures the integrity of the data in the object by using setter and getter methods.
 2) Inheritance - Inheritance refers to a new feature that we'll look at now the ability to have one class inherit the attributes of another class.
-3) Polymorphism
+3) Polymorphism - This refers to a design in which objects of dissimilar types can be treated in the same manner. More specifically it refers to two classes that have methods of the same name.
+                  We call this a common interface because we can call the same method on either type of object.
+                  Here the methods are different but conceptually similar. This allows for expressiveness in design. A group of related classes implement same action
+                  Ex: len('hello), len([1,2,3]) and len({'a': 1, 'b': 2}) are all using length method which gives similar expected o/p but are implemented differently
 
 Object.Attribute Lookup Hierarchy
 1) In the instance
@@ -39,4 +42,110 @@ Object.Attribute Lookup Hierarchy
 
 * An inheriting class - Child class / Derived class / Subclass
 * An inherited class - Parent class / Base class / Superclass
+
+Ineritance Hierarchy:
+* Classes can be organized into an inheritance hierarchy
+* A child class can access the attributes of all parent (grandparent, etc) Classes
+
+Inheriting the Constructor:
+* __init__ is like any other method; it can be inherited
+* If a class does not have an __init__ constructor, Python will check its parent class to see if it can find one. As soon as it finds one, Python calls it and stops looking
+* We can use the super() funtion to call methods in the parent class
+* We may want to initialize in the parent (for general functionality) as well as our own class (for our class specific functionality)
+
+Method Resolution Order:
+It is the order in which base classes are searched for a member during lookup. A class may inherit from multiple classes and any of these parent classes may themselves
+inherit from one or more other classes.
+
+Topology 1:
+                            |class A(object):
+                                def dothis(self):|
+                                    ^
+                                    |
+                                    |
+                                    |                   |class C(object):    
+                                |class B(A):             ^  def dothis(self):|
+                                    pass |              /
+                                        ^              /
+                                         \            /
+                                          \          /
+                                           \        /
+                                        |class D(B,C):
+                                                pass |  
+
+                            d_inst=D()
+                            d_inst.dothis()
+                            # which dothis() will it call ? - Depth-first or Breadth-first
+                            #mro: D-B-A-C
+
+Python will check the instance then the class then any parent classes and then what we may call grandparent classes to find the attribute in the case of multiple inheritance.
+By default Python will use a depth first search for an attribute in a class hierarchy.
+
+Topology 2: (Dimond shaped)
+
+                                        |class A(object):
+                                            def dothis(self):|
+                                            ^            ^
+                                           /              \
+                                          /                \
+                                         /                  \
+                                        /               |class C(object):    
+                                |class B(A):             ^  def dothis(self):|
+                                    pass |              /
+                                        ^              /
+                                         \            /
+                                          \          /
+                                           \        /
+                                        |class D(B,C):
+                                                pass |  
+
+                            d_inst=D()
+                            d_inst.dothis()
+                            # which dothis() will it call ? - Depth-first or Breadth-first
+                            #mro: D-B-C-A
+
+Things get a little more complicated if the same class appears in two other classes inheritance. Here the depth first approach will provide the order as D-B-A-C-A.
+As "A" is repeated twice and to remove ambiguity, Python removes the earlier appearances of repeated class and hence the order becomes D-B-C-A.
+So, when two classes inherit from the same class, Python eliminates the first mention of that class from the mro.
+
+Decorators-> Class and Static Methods:
+* Instance methods are designed to work on instance. In the instance methods, instance is the first argument (self). Because of this automatic passing, instance is bound to the method.
+* But some of the functionality might not actually have to do with the instance itself but might be relating directly to the class itself dealing with class data. 
+* The methods where the instance is not required and these methods we can call class methods.
+* A class method takes the class (not instance) as argument and works with the class object. Hence they are not bound to the instance. 
+* We can use the class object to call the method directly.
+* Decorator is a processor that modifies a function. It modifies the default binding that instance methods provide. 
+* By providing this decorator, we are letting know that its not bound to instance
+* The static method decorator is neither a class method which would work with the class or an instance method which would work with the instance. Instead tt's just a utility class.
+* The static method belongs in the class code because it works with the class code but it's neither an instance nor a class method.
+* A static method requires no argument and does not work with the class or instance.
+
+Abstract Base Class:
+* When we're working in a collaborative environment with other developers who are creating classes that will fit into a larger hierarchy,
+  we may want to define a class that indicates and enforces what methods the subclass should implement. This we call as abstract class
+* An abstract class is a kind of "model" for other classes to be defined. It is not designed to construct instances but can be sub-classed by regular classes
+* Abstract classes can define an interface or methods that must be implemented by its subclasses
+* The python abc module enables the creation of abstract base classes
+* Abstract base classes can't be instantiated directly
+
+Inheritance Possibilities:
+* When working in a child class we can choose to implement parent class methods in one of the following ways:
+    * Inherit: simply use the parent class defined method
+    * Override: Provide child's own version of a method
+    * Extend: Do work in addition to that in parent's method
+    * Abstract: Implement abstract method that parent requires
+
+Composition Vs Inheritance:
+* Class Composition can be an alternative to Inheritance
+* Inheritance can be brittle (a change may requrie changes elsewhere). This is becuase inheritance establishes dependencies between parent and child classes
+* Composition approach uses independent classes that can work together but aren't related
+* As long as the interface is maintained, interactions between classes will work. This is in a way polymorphic
+
+
+
+
+
+
+
+
 
