@@ -1,9 +1,11 @@
-Class - The class is the factory and the blueprint for an instance
-Instance - A constructed object of the class
-Type - Indicates the class to which the instance belongs to
-Attribute - Any object value: object.Attribute
-Method - A "callable attribute" defined in the class
+Definitions:
+* Class - The class is the factory and the blueprint for an instance
+* Instance - A constructed object of the class
+* Type - Indicates the class to which the instance belongs to
+* Attribute - Any object value: object.Attribute
+* Method - A "callable attribute" defined in the class
 
+More Info:
 * Classes are "instance factories"
 * Classes define an "instance blueprint"
 * Instances know to which class they belong ("type")
@@ -20,6 +22,7 @@ Method - A "callable attribute" defined in the class
 5) Variables defined in the class are called class attributes
 6) When we read an attribute, Python looks for it first in the instance, and then the class
 
+More Info:
 * Instance methods are variables defined in the class
 * They are accessed through the instance: instance.method()
 * When called through the instance, the instance is automatically passed as 1st argument to the method
@@ -27,7 +30,7 @@ Method - A "callable attribute" defined in the class
 * Instance data takes the form of instance attribute values, set and accessed through object.attribute syntax
 
 
-3 Pillars of OOP
+3 Pillars of OOP:
 1) Encapsulation - Ensures the integrity of the data in the object by using setter and getter methods.
 2) Inheritance - Inheritance refers to a new feature that we'll look at now the ability to have one class inherit the attributes of another class.
 3) Polymorphism - This refers to a design in which objects of dissimilar types can be treated in the same manner. More specifically it refers to two classes that have methods of the same name.
@@ -35,7 +38,7 @@ Method - A "callable attribute" defined in the class
                   Here the methods are different but conceptually similar. This allows for expressiveness in design. A group of related classes implement same action
                   Ex: len('hello), len([1,2,3]) and len({'a': 1, 'b': 2}) are all using length method which gives similar expected o/p but are implemented differently
 
-Object.Attribute Lookup Hierarchy
+Object.Attribute Lookup Hierarchy:
 1) In the instance
 2) In the class
 3) Any class from which this class inherits
@@ -141,8 +144,112 @@ Composition Vs Inheritance:
 * Composition approach uses independent classes that can work together but aren't related
 * As long as the interface is maintained, interactions between classes will work. This is in a way polymorphic
 
+Operators in classes:
+* ADD Operator
+    * if var1='hello' & var2='world!' then var1+var2 will result in 'hello world!'
+    * The above is same as var1.__add__(var2). The magic method __add__ is called where '+' is used
+    * This works for var3=5, var4=10 and var3.__add__(var4) will be 15 and same works for lists as well
+* The same is true for any operators like +, -, *, /, in and built-in functions len() and str()
+* These operators/functions also respond similarly when we use them in our classes
+* Core syntax features translate to magic method calls
+* When we add magic method in our own classes, we can make use of the operator too
+* 'abc' in var resolves to var.__contains__('abc')
+* var=='abc' resolves to var.__eq__('abc')
+* var[1] resolves to var.__getitem__(1)
+* var[1:3] resolves to var.__getslice__(1,3)
+* len(var) resolves to var.__len__()
+* print(var) resolves to var.__repr__()
 
+Magic Methods __str__() and __repr__():
+* The __str__() and __repr__() methods can be helpful in printing useful information about an object
+* The __str__() method returns a human-readable, or informal, string representation of an object
+* This __str__() method is called by the built-in print(), str(), and format() functions
+* If you don’t define a __str__() method for a class, then the built-in object implementation calls the __repr__() method instead
+* The repr method is called implicitly when we do certain operations on the object
+* The __repr__() method returns a more information-rich, or official, string representation of an object. This method is called by the built-in repr() function. 
+* Note that str() and repr() return the same value, because str() calls __repr__() when __str__() isn’t implemented.
 
+Inheriting from built-ins:
+* Python let our classes inherit from built-in classes
+* An inheriting (child) class of a built-in, shares all the same attributes(including methods) of built-in
+* We can take advantage of core built-in functionality, but customize selected operations too
+
+Decorators:
+* A decorator function is basically a function that adds new functionality to a function that is passed as argument.
+
+Properties (@property) in Python:
+* The @property is a built-in decorator for the property() function in Python. 
+* It is used to give "special" functionality to certain methods to make them act as getters, setters, or deleters when we define properties in a class.
+* Specifically, you can define three methods for a property:
+    * A getter - to access the value of the attribute.
+    * A setter - to set the value of the attribute.
+    * A deleter - to delete the instance attribute.
+* By defining properties, you can change the internal implementation of a class without affecting the program, so you can add getters, setters, and deleters that act as intermediaries "behind the scenes" to avoid accessing or modifying the data directly.
+* The @property lets a method to be accessed as an attribute instead of as a method with a '()'
+
+Variable naming standard according to PEP 8:
+* It's recommended that all function and method variable names be all lowercase with underscores (all_lower_case)
+* Class names and exceptio names: CamelCase
+* Global and local variables: all_lower_case
+* Constants: ALL_CAPS
+* Public variables/attributes - intended to be used by the importer of this module or user of this class: regular_lower_case
+* Private variabes/attributes - intended for internal use by the module or class: _single_leading_underscore
+* Private attributes that are intended to not be used in subclasses: __double_leading_underscore
+* Magic attributes: __double_underscores__
+
+Context Manager -  __with__ block:
+* Some objects need to "clean up" when done
+    * File object needs to close()
+    * A network connection may need to close
+    * A data-intensive operation may need to del the data
+* __with__ provides a block that "cleans up" when exited
+* this block also handles exceptions that occur within the block and can also excute code when entered
+* When you use a with block in python, the object in the with statement gets its __enter__ method called, the block inside the with runs, and then the __exit__ gets called (optionally with exception info if one was raised).
+
+Exceptions:
+* Exceptions are an elegant mechanism for handling errors
+* Because each exception has a type and we want to be precise about what we're trapping.
+* The easiest way to know the error is just by causing (try) the error and seeing what type of exception results
+
+Exception Types:
+* ZeroDivisionError: integer divison or modulo by Zero
+    * >>> 5/0
+* NameError: name 'xx' is not defined
+    * print(v) when v is not defined prior
+* SyntaxError: EOL while scanning strin literal
+    * print('hello)
+* KeyError: 
+    * mydict['a'] when a is not existing in the dict
+* IndexError: list index out of range
+    * mylist[4] when 4th element in the list doesn't exist
+* etc
+
+sys.argv:
+* sys.argv is a list in Python that contains all the command-line arguments passed to the script
+* To use sys.argv, you will first need to import sys module
+* With the len(sys.argv) function, you can count the number of arguments
+    * import sys
+    * print ("Number of arguments:", len(sys.argv), "arguments")
+    * print ("Argument List:", str(sys.argv))
+    * $ python test.py arg1 arg2 arg3
+    * Number of arguments: 4 arguments.
+    * Argument List: ['test.py', 'arg1', 'arg2', 'arg3']
+* example: python sample.py Hello Python 
+    * sys.argv[0] == ‘sample.py’ 
+    * sys.argv[1] == ‘Hello’ 
+    * sys.argv[2] == ‘Python’
+
+RegEx module - (import re):
+* Python has a built-in package called re, which can be used to work with Regular Expressions
+* The re module offers a set of functions that allows us to search a string for a match:
+    * findall -	Returns a list containing all matches
+        * ex - Print a list of all matches:--------------------------------------------->>> txt = "The rain in Spain"; x = re.findall("ai", txt)
+    * search - Returns a Match object if there is a match anywhere in the string
+        * ex - Search the string to see if it starts with "The" and ends with "Spain":-->>> txt = "The rain in Spain"; x = re.search("^The.*Spain$", txt)
+    * split - Returns a list where the string has been split at each match
+        * ex - Split at each white-space character:------------------------------------->>> txt = "The rain in Spain"; x = re.split("\s", txt)
+    * sub - Replaces one or many matches with a string
+        * ex - Replace every white-space character with the number 9:------------------->>> txt = "The rain in Spain"; x = re.sub("\s", "9", txt)
 
 
 
