@@ -251,6 +251,28 @@ RegEx module - (import re):
     * sub - Replaces one or many matches with a string
         * ex - Replace every white-space character with the number 9:------------------->>> txt = "The rain in Spain"; x = re.sub("\s", "9", txt)
 
+Python *args and **kwargs:
+* In Python, we can pass a variable number of arguments to a function using special symbols. 
+* We use *args and **kwargs as an argument when we are unsure about the number of arguments to pass in the functions
+* It basically says that if you pass any arguments to the function or method the objects will be stored in a tuple called args or a dictionary called kwargs
+* But we can also pass no arguments in which case args will be empty.
+* There are two special symbols:
+    *args (Non Keyword Arguments) - Receive multiple arguments as a tuple
+        * ex: def my_sum(*args):
+                return sum(args)
+
+            print(my_sum(1, 2, 3, 4))
+            print(my_sum(1, 2, 3, 4, 5, 6, 7, 8))
+
+    **kwargs (Keyword Arguments) - Receive multiple keyword arguments as a dictionary, with the argument names as keys and their values as the corresponding dictionary values.
+        * ex: def func_kwargs(**kwargs):
+                print('kwargs: ', kwargs)
+                print('type: ', type(kwargs))
+
+              func_kwargs(key1=1, key2=2, key3=3)
+
+
+
 
 
 

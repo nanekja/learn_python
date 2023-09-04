@@ -22,5 +22,6 @@ class MyError(Exception): # Here MyError class inherits from built-in Exception 
         else:
             return("here's a MyError exception!")
 
-raise MyError
+# raise MyError
+
 raise MyError("Houston, we have a problem")
