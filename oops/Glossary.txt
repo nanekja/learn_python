@@ -271,6 +271,45 @@ Python *args and **kwargs:
 
               func_kwargs(key1=1, key2=2, key3=3)
 
+Object Serialization:
+* Serialization means persistent storage (i.e, to disk). Serialization is also referred to as object persistence and persistence means storing data between executions of a program
+* Relational storage writes data to tables (e.g, relational database text files). That's a form of persistence but it's not object persistence.
+* Object-based storage stores objects as they are used in code
+* If what we've stored on disk is actually a Python object, then we can say that the object was made persistent
+* In object serialization, instead of storing object values in tables we'll attempt to store our Python objects as objects.
+
+Ways to object Serialization:
+    * Pickle:
+        * Pickle is probably operationally the simplest way to store Python objects
+        * Pickle lets to store the whole object as it is without breaking out these elements by looping through them and/or then write each one to a line in the file or a row in database
+        * Benefits:
+            * We don't have to think of transferring the data to some other format. Just dump the object and then when we load it we get it back
+            * Very convenient
+        * Downsides:
+            * Pickle file is not human readable
+            * It's a bit slow to store/retrieve
+            * Consumes a little additional space on disk
+        * Python doesn't actually store module or class code and it doesn't store class variables either.
+        * In other words - in pickling the instance, we haven't pickled the class and even pickling the class object itself is not going to help.
+        * Pickle can't store code. It also doesn't store class attribute values.
+        * So if you want to pickle an instance or a function or a module, the code for it actually needs to be available as pickle refers to the code
+
+    * JSON (JavaScript Object Notation):
+        * It was designed for javascript originally but has become popular across languages for this very reason that its Human readable and editable
+        * Often used for configuration files
+        * Caveats to be aware during editing of json files:
+            * Unlike in Python, json reports error if there is a comma after the last element in the list
+            * Single quotes are not allowed in json
+            * The "true" value in a dictionary inside json isn't capitalized and in Python a value of "True" wouldn't be the true value if it wasn't capitalized.
+            
+    * YAML (YAML Ain't Markup Language)
+        * Serializes Python objects, like Pickle or JSON
+        * Uses whitespace to separate elements
+        * Needs to install Pyyaml
+        
+
+
+
 
 
 
