@@ -1,4 +1,4 @@
-with open('filename.txt') as fh:
+with open('./oops/3_adv_features/filename.txt') as fh:
     for line in fh:
         line=line.rstrip()
         print(line)

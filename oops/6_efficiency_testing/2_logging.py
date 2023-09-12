@@ -12,7 +12,15 @@ logging.warning('And this, too')
 
 ################################  Example-2 ##########################################################
 
-logging.basicConfig(level=logging.INFO, filename='./oops/6_efficiency_testing/example.log')   # here we are setting the logging level
+logging.basicConfig(level=logging.INFO, filename='./oops/6_efficiency_testing/example.log', filemode='w')   # here we are setting the logging level and sending to a file
+
+logging.debug('This message will be ignored')  # because the debug statement is beneath the threshold of info, it doesn't get printed
+logging.info('This should be logged')
+logging.warning('And this, too')
+
+################################  Example-3 ##########################################################
+
+logging.basicConfig(format='%(asctime)s %(levelname)s:%(messages)s', datefmt='%m/%d/%Y %I:%M:%S %p', level=logging.INFO)   # here we are setting the logging level and sending to a file
 
 logging.debug('This message will be ignored')  # because the debug statement is beneath the threshold of info, it doesn't get printed
 logging.info('This should be logged')
