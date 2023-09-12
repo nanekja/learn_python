@@ -324,9 +324,34 @@ Python Logging Module:
     * Then when we're running our program we get to choose which log messages we'll see.
     * The default, if we don't set a level at all is warning
 
-        
+Benchmarking with timeit:
+    * Benchmarking means comparing two code snippets to see which executes faster
+    * Time and memory are often not a concern to us, but it is to some Python programmers
+    * Sometimes when a script is running too long it could also mean that it's allocating too much memory or using memory inefficiently.
+    * Time tests should be run multiple times
+    * Tests should consider the context in which they will run
 
-
+Pytest Module:
+    * Software Testing:
+        * The most basic form of software testing, tests the outcome of single functions or single method calls
+        * Well-designed software usually consists of small units that are the functions and methods and it benefits in testing
+        * If we can test each small unit in isolation we go a long way to verifying that that code is working properly
+        * Unit Testing:
+            * Each function or method is thought of as a testable unit so we call this approach unit testing
+            * Unit tests are an essential requirement of quality code
+            * Since code is so complex, we test the individual units in isolation
+        * End to End Testing:
+            * It will test the program as a whole
+    * Pytest is the testing module that allows us to write scripts that test other scripts 
+    * Python testing script simply imports another script, then calls each of its functions and methods and then asserts various things about the outcome.
+    * Python tests are Python programs that test other Python programs
+    
+    * py.test looks for scripts functions/methods called test_
+    * After calling function or method, assert something is true
+    * with pytest.raises() to assert that an exception is raised
+    * setup_class() method to do test prep
+    * teardown_class() method to clean up after tests
+    *
 
 
 
