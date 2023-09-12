@@ -1,6 +1,7 @@
 import pickle
 
 ################################  Example-1 ##########################################################
+
 mylist = ['a', 'b', 'c', 'd']
 
 with open('./oops/5_object_serialization/datafile.txt', 'wb') as fh:
