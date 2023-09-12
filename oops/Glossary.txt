@@ -304,8 +304,16 @@ Ways to object Serialization:
             
     * YAML (YAML Ain't Markup Language)
         * Serializes Python objects, like Pickle or JSON
-        * Uses whitespace to separate elements
-        * Needs to install Pyyaml
+        * YAML denies that it is markup language as it uses whitespace to separate elements rather than using {} braces like other markup languages
+        * Need to install Python's YAML parsing module Pyyaml to use YAML
+        * We can load and dump multi-dimensional structures in a way similar to the way we did with Jason and pickle
+        * In pickle/JSON, "dumps" and "loads" would work from the string or go to a string whereas dump and load just worked with a file handle or other file like object.
+        * But in YAML, just the "dump" and "load" is enough. If you pass it a string, it will work with a string and if you pass it a file handle it'll work with the file handle
+
+Python Debugger (PDB):
+    * PDB is built-in to Python. There are IDE debuggers as well which provide visual means to debug but PDB is built-in option
+    
+
         
 
 
