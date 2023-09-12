@@ -24,6 +24,6 @@ s_io=StringIO()
 w2=WriteMyStuff(s_io)
 w2.write()
 
-print('file object:', open('test.txt', 'r').read())
+print('file object:', open('./oops/2_inheritance_polymorphism/test.txt', 'r').read())
 print('String object: ',s_io.getvalue())
 

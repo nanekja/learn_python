@@ -310,9 +310,19 @@ Ways to object Serialization:
         * In pickle/JSON, "dumps" and "loads" would work from the string or go to a string whereas dump and load just worked with a file handle or other file like object.
         * But in YAML, just the "dump" and "load" is enough. If you pass it a string, it will work with a string and if you pass it a file handle it'll work with the file handle
 
-Python Debugger (PDB):
-    * PDB is built-in to Python. There are IDE debuggers as well which provide visual means to debug but PDB is built-in option
-    
+Python Debugger (PDB) Module: PDB is built-in to Python. There are IDE debuggers as well which provide visual means to debug but PDB is built-in option
+
+Python Logging Module:
+    * Writes logging "events" to file or the terminal screen
+    * Messages are written and logged at levels of "severity":
+        * DEBUG (debug()): diagnostic messages for development
+        * INFO (info()): standard "progress" messages
+        * WARNING (warning()): detected a non-serious issue
+        * ERROR (error()): encountered an error, possibly serious
+        * CRITICAL (critical()): usually a fatal error (program stops)
+    * So what we do is we insert statements into our program and we set a severity level to each statement
+    * Then when we're running our program we get to choose which log messages we'll see.
+    * The default, if we don't set a level at all is warning
 
         
 
