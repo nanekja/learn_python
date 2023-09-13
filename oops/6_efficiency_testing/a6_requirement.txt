@@ -1,0 +1,14 @@
+* A new instance is a ConfigDict(isinstance(obj, ConfigDict))
+* A new instance is also a dict(isinstance(obj, dict))
+* The filename passed to init is stored in the _filename attribute
+* A pre-existing file still exists after constructing a new instance
+* A new, not-yet-existing file exists after constructing a new instance
+* Bad file path to constructor raises IOError
+* Instance dict has correct key/value pairs
+* Value with '=' in it has correct value (i.e, '='.split(value)) doesn't split into > 2 pieces
+* Good key read from instance returns correct value
+* Bad key read from instance raises ConfigKeyError
+* Key/value added to instance updates file properly
+
+
+

@@ -169,6 +169,10 @@ Magic Methods __str__() and __repr__():
 * The __repr__() method returns a more information-rich, or official, string representation of an object. This method is called by the built-in repr() function. 
 * Note that str() and repr() return the same value, because str() calls __repr__() when __str__() isn’t implemented.
 
+if __name__ == '__main__':
+    * This gate basically says that if we execute the program containing this directly, then we will execute all the lines under it
+    * But if we import the program containing this gate from another script, then all of the code from this program will get loaded but the code under this gate won't get executed.
+
 Inheriting from built-ins:
 * Python let our classes inherit from built-in classes
 * An inheriting (child) class of a built-in, shares all the same attributes(including methods) of built-in
@@ -345,13 +349,26 @@ Pytest Module:
     * Pytest is the testing module that allows us to write scripts that test other scripts 
     * Python testing script simply imports another script, then calls each of its functions and methods and then asserts various things about the outcome.
     * Python tests are Python programs that test other Python programs
-    
+    * Pytest doesn't come installed with Python and it needs to be installed
+    * Python has another built-in package called unit test but that is different from Pytest
+    * The name "test" prepended to the name of our script and our function is required for Python to be able to find it when we first run pytest.
     * py.test looks for scripts functions/methods called test_
+    * Python is going to look for any program whose name begins with test and inside that program for any function whose name begins with test. These functions/methods are units that are tested
     * After calling function or method, assert something is true
+    * Assert:
+        * assert is a simple statement, we often use it in out scripts (ex: assert 5 == 5)
+        * If we pass a true statement to assert we get nothing back. And that's because the assert is designed to be silent.
+        * If the assert statement is false, then we get an AssertionError
+    * we run the test by executing "py.test" in the command prompt which will search for file prepending with "test_" and runs the test
     * with pytest.raises() to assert that an exception is raised
+    * Test driven development approach is the one which you write the tests first and then you write the code to fulfill the test because it ensures that we have a very thorough
+        testing suite to go along with the code that we write.
     * setup_class() method to do test prep
     * teardown_class() method to clean up after tests
-    *
+    * Tests don't normally operate on live data because they may make changes in the process.
+    * There are entities called fixtures that will mock data for the tests to use.
+    * It's much cleaner and safer to have the tests operate on a temporary data set for this purpose and for any other process that prepares the environment for the test to run it.
+    
 
 
 
